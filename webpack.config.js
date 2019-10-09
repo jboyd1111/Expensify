@@ -16,7 +16,7 @@ module.exports= (env)=> {
 return { // this is a 'node' item, to allow your objects to be exported/seen in another file
   entry:'./src/app.js', // tells webpack where it should start
   output: { // where webpack should output it's working file to
-      path: path.join(__dirname,'public'),
+      path: path.join(__dirname,'public','dist'),
       // 
       filename:'bundle.js' // webpack working file
   },
@@ -55,7 +55,8 @@ return { // this is a 'node' item, to allow your objects to be exported/seen in 
   // into the browser if the user brings up the dev tools (hits F12)
   devServer: {
     contentBase: path.join(__dirname,'public'),
-    historyApiFallback:true
+    historyApiFallback:true,
+    publicPath: '/dist/'
   }
 };
 };
