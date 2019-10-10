@@ -13,7 +13,7 @@ test('should render Rent ExpenseListItem with expenses', ()=>{
     // could have also written above as:
     // const wrapper = shallow(<ExpenseListItem id={expense.id} description={expense.description}
     //     amount={expense.amount} createdAt={expense.createdAt} />);
-    // expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
 });
 
 // test('should render Rent ExpenseListItem with an empty message', ()=>{
