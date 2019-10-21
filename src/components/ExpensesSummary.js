@@ -1,35 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux'; // connects your component to the Redux store
-import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
+import numeral from 'numeral';
 
-export const ExpenseList = (props) => ( // no need for export keyword on this line that I can tell!
+const renderSwitch =(param)=> {
+    switch(param.expenses.length) {
+        case 0:
+           break;
+        case 1:
+         return (<p>Viewing 1 expense totalling: &nbsp;
+                        {numeral(
+                      param.expenses.reduce((total,b)=> {
+                          return total+ b.amount;
+                      },0) / 100).format('$0,0.00')}</p>
+                  )
+        default:
+          return (<p>Viewing {param.expenses.length} expenses totalling: &nbsp;
+                        {numeral(
+                      param.expenses.reduce((total,b)=> {
+                          return total+ b.amount;
+                      },0) / 100).format('$0,0.00')}</p>
+                  );
+      }
+}
+const ExpenseSummary = (props) => ( // no need for export keyword on this line that I can tell!
     <div>
      {
-         props.expenses.length===0?(
-             <p>No expenses</p>
-              ): (
-               props.expenses.map((expense)=> {
-                   return <ExpenseListItem key= {expense.id} {...expense} />;
-               })   
-              )
+         renderSwitch(props)
      }
     </div>
 );
-
-// Original way
-// const ConnectedExpenseList = connect((state) => {
-//     return {
-//         expenses:state.expenses
-//     };
-// })(ExpenseList); 
-
-
-// export default ConnectedExpenseList;
-
-// preferred way:
-// from "Original way" up to this point is one way to export your Redux store
-// other way is:
 
 // As the store changes the following function will be automatically rerun
 const mapStateToProps = (state) => {
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect (mapStateToProps)(ExpenseList); // This gives access
+export default connect (mapStateToProps)(ExpenseSummary); // This gives access
 // to the Redux store to the ExpenseList component
 // The parameter used with connect is the function that lets us determine what information from the 
 // store that we want to be able to access

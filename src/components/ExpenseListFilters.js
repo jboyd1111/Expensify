@@ -50,9 +50,9 @@ render(){
             </select>
             <DateRangePicker 
             startDate={this.props.filters.startDate}
-            startDateId={"111"}
+            startDateId={"222"}
             endDate={this.props.filters.endDate}
-            endDateId={"222"}
+            endDateId={"333"}
             onDatesChange={this.onDatesChange}
             focusedInput={this.state.calendarFocused}
             onFocusChange={this.onFocusChange}
