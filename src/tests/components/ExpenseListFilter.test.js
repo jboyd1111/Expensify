@@ -41,7 +41,7 @@ test('should handle text change correctly', ()=>
     wrapper.find('input').simulate('change',{ 
     target: {value }});
     expect(setTextFilter).toHaveBeenLastCalledWith(
-        {"text": "R", "type": "SET_TEXT_FILTER"}
+      "R"
     );
 });
 

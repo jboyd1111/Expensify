@@ -15,11 +15,11 @@ const renderSwitch =(param)=> {
                       },0) / 100).format('$0,0.00')}</h1>
                   )
         default:
-          return (<p>Viewing {param.expenses.length} expenses totalling: &nbsp;
+          return (<h1>Viewing {param.expenses.length} expenses totalling: &nbsp;
                         {numeral(
                       param.expenses.reduce((total,b)=> {
                           return total+ b.amount;
-                      },0) / 100).format('$0,0.00')}</p>
+                      },0) / 100).format('$0,0.00')}</h1>
                   );
       }
 }
