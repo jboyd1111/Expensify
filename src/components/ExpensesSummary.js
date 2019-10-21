@@ -4,9 +4,7 @@ import selectExpenses from '../selectors/expenses';
 import numeral from 'numeral';
 
 const renderSwitch =(param)=> {
-    switch(param.expenses.length) {
-        case 0:
-           break;
+    switch(param.expenses.length) {       
         case 1:
          return (<h1>Viewing 1 expense totalling: &nbsp;
                         {numeral(
