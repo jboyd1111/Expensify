@@ -8,11 +8,11 @@ const renderSwitch =(param)=> {
         case 0:
            break;
         case 1:
-         return (<p>Viewing 1 expense totalling: &nbsp;
+         return (<h1>Viewing 1 expense totalling: &nbsp;
                         {numeral(
                       param.expenses.reduce((total,b)=> {
                           return total+ b.amount;
-                      },0) / 100).format('$0,0.00')}</p>
+                      },0) / 100).format('$0,0.00')}</h1>
                   )
         default:
           return (<p>Viewing {param.expenses.length} expenses totalling: &nbsp;
