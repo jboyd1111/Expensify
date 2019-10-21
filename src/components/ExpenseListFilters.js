@@ -16,7 +16,7 @@ export class ExpenseListFilters extends React.Component {
         this.setState(()=>({calendarFocused }));
     };
     onTextChange=(e) =>{
-            this.props.setTextFilter(setTextFilter(e.target.value)); // you have access to the 'dispatch' function from your props
+            this.props.setTextFilter(e.target.value); // you have access to the 'dispatch' function from your props
         };
     onSortChange= (e) =>
             {
