@@ -23,7 +23,7 @@ const renderSwitch =(param)=> {
                   );
       }
 }
-const ExpenseSummary = (props) => ( // no need for export keyword on this line that I can tell!
+export const ExpensesSummary = (props) => ( // no need for export keyword on this line that I can tell!
     <div>
      {
          renderSwitch(props)
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect (mapStateToProps)(ExpenseSummary); // This gives access
+export default connect (mapStateToProps)(ExpensesSummary); // This gives access
 // to the Redux store to the ExpenseList component
 // The parameter used with connect is the function that lets us determine what information from the 
 // store that we want to be able to access
