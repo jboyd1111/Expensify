@@ -1,0 +1,123 @@
+import * as firebase from 'firebase'; // takes all of the named exports from firebase and installs them
+// on a variable called firebase. This is recommended by firebase
+
+const config = {
+    apiKey: "AIzaSyAKVE9L_GbveDI0Zs5GuHxXOc7HYrVE848",
+    authDomain: "expensify-4124b.firebaseapp.com",
+    databaseURL: "https://expensify-4124b.firebaseio.com",
+    projectId: "expensify-4124b",
+    storageBucket: "expensify-4124b.appspot.com",
+    messagingSenderId: "1014970371927",
+    appId: "1:1014970371927:web:b2f9726c69e98e4b44f812"
+  };
+
+
+  // Initialize Firebase
+  firebase.initializeApp(config);
+
+  // to test the connection
+  const database = firebase.database();
+
+  // since firebase can't work with arrays we would use .push()
+  // which makes firebase create a randomly-generated id for a new node
+  // so next statement will add to the notes node. It will create an object
+  // with some randomly-generated name, then list title and body as properties
+  // database.ref('notes').push({
+  //   title: 'Course Tpics',
+  //   book: 'React Native, Angular, Python'
+  // });
+
+  
+  // Next set of lines fetch from the database one time
+  // database.ref('job/title')
+  // .once('value')
+  // .then((snapshot)=>{
+  //   const val =snapshot.val();
+  //   console.log(val);
+  // })
+  // .catch((e)=>{
+  //   console.log('Error fetching data',e);
+  // });
+
+  // Next set of lines constantly watch the database for changes and then re-fetches
+  // using the callback pattern
+  // const onValueChange=database.ref().on('value',(snapshot)=>{
+  //   const val=snapshot.val();
+  //   console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+  // },(e)=>{
+  //   console.log('Error with data fetching',e)
+  // });
+
+  // next 2 lines will unsubscribe from 'watch' (on) event above
+  // setTimeout(()=>{
+  //   database.ref().off('value',onValueChange);
+  // },7000);
+
+
+  // Next set of lines add data to the DB
+  // database.ref().set({
+  //   name: 'Jeff Boyd',
+  //   age: 55,
+  //   stressLevel:6,
+  //   job:{
+  //     title: 'Software Developer',
+  //     company: 'Google'
+  //   },
+  //   isSingle:false,
+  //   location: {
+  //       city: 'Eagan',
+  //       state:'Minnesota',
+  //       country: 'United States'
+  //   }
+  // }).then(()=>{
+  //     console.log('Data is saved');
+  // }).catch((error)=>{
+  //   console.log('this failed ',error);
+  // });
+
+//   database.ref().set('This is my data.');
+// will update the 'age' location of our db
+// database.ref('age').set(56);
+
+// will update the 'location' location of our db
+// database.ref('location/city').set('Woodbury');
+// database.ref('isSingle').set(false);
+
+// Could set new db area called 'attributes' via next 2 lines
+// but, better to do it beginning on 3rd line below
+// database.ref(attributes/height).set(75);
+// database.ref(attributes/weight).set(241);
+// database.ref('attributes').set({
+//     height:75,
+//     weight:241
+// }).then(()=>{
+//     console.log('Second set call worked');
+// }).catch((error)=>{
+//   console.log('Second set call failed ',error);
+// });
+
+// database.ref('isSingle')
+// .remove()
+// .then(()=> {
+//     console.log("Remove succeeded.")
+//   })
+//   .catch(function(error) {
+//     console.log("Remove failed: " + error.message)
+//   });
+
+// passing in null is same as calling remove()
+// calling remove() is better because it's explicit
+// database.ref('isSingle').set(null);
+
+// using update
+// database.ref().update({
+//     job:'Manager',
+//   'location/city': 'Boston' // need 'location/city' in single quote because the '/' without them wouldn't work in JS
+// })
+
+// database.ref().update({
+//   'location/city': 'Seattle',
+//   'job/company': 'Amazon',
+//   stressLevel:9,
+//   isSingle:null
+// });

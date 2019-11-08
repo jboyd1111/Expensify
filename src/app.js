@@ -10,13 +10,15 @@ import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import './firebase/firebase';
+// import './playground/promises'; // uncomment this line to play around with promises.js
 
 const myStore = configureStore();
 
 // Add Expenses and Filters to state
-myStore.dispatch(addExpense({ description: 'Water bill', amount: 4500 }));
-myStore.dispatch(addExpense({ description: 'Gas bill',  amount: 500, createdAt: 1000 }));
-myStore.dispatch(addExpense({ description: 'Rent', amount: 109500, createdAt:2000 }));
+// myStore.dispatch(addExpense({ description: 'Water bill', amount: 4500 }));
+// myStore.dispatch(addExpense({ description: 'Gas bill',  amount: 500, createdAt: 1000 }));
+// myStore.dispatch(addExpense({ description: 'Rent', amount: 109500, createdAt:2000 }));
 
 // store.subscribe(() => {
     const jvbMadeUpStoreName = myStore.getState();
