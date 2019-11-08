@@ -5,7 +5,7 @@
 // yarn run build (or, latest: yarn run dev-server)
 const path = require('path');
 const webpack = require('webpack');
-)
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // process.env.NODE_ENV Heroku sets this to production by default
@@ -59,7 +59,7 @@ return { // this is a 'node' item, to allow your objects to be exported/seen in 
   },
   plugins: [
     CSSExtract,
-    new webpack.DefindPlugin({
+    new webpack.DefinePlugin({
       'process.env.FIREBASE_API_KEY':JSON.stringify(process.env.FIREBASE_API_KEY),
       'process.env.FIREBASE_AUTH_DOMAIN':JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
       'process.env.FIREBASE_DATABASE_URL':JSON.stringify(process.env.FIREBASE_DATABASE_URL),
