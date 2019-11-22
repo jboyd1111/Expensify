@@ -49,19 +49,19 @@ const config = {
   // });
 
   // get data from DB one time
-  // database.ref('expenses')
-  // .once('value')
-  // .then((snapshot)=>{
-  //   const expenses=[];
+  database.ref('expenses')
+  .once('value')
+  .then((snapshot)=>{
+    const expenses=[];
 
-  //   snapshot.forEach((childSnapshot)=>{
-  //     expenses.push({ // pushing items onto this new array NOT a push to the firebase DB
-  //       id:childSnapshot.key,
-  //       ...childSnapshot.val()
-  //     });
-  //   });
-  //   console.log(expenses)
-  // });
+    snapshot.forEach((childSnapshot)=>{
+      expenses.push({ // pushing items onto this new array NOT a push to the firebase DB
+        id:childSnapshot.key,
+        ...childSnapshot.val()
+      });
+    });
+    console.log(expenses)
+  });
 
   // watch for changes in data
   // database.ref('expenses')

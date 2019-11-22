@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import database from '../firebase/firebase';
 
 // ADD_EXPENSE
@@ -42,3 +41,28 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+// SET_EXPENSES will set the array value. We get it from Firebase, then set it
+export const setExpenses=(expenses)=>({
+    type:'SET_EXPENSES',
+    expenses
+});
+
+// startSetExpenses will actually fetch the data from Firebase
+// then dispatch the setExpenses function above
+ export const startSetExpenses = (expenseData={})=>{
+    return (dispatch) =>{      
+      return  database.ref('expenses')
+      .once('value')
+      .then((snapshot)=>{    
+          const expenses=[];
+        snapshot.forEach((childSnapshot)=>{
+          expenses.push({ // pushing items onto this new array NOT a push to the firebase DB
+            id:childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        dispatch(setExpenses(expenses));
+      });      
+    };
+};
