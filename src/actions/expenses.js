@@ -34,6 +34,17 @@ export const removeExpense = ({ id } = {}) => ({
     id
 });
 
+export const startRemoveExpense = ({ id } = {}) => { // removes from firebase, then from store
+    return (dispatch) =>{
+        // Could have also done following line like so:
+        // return  database.ref('`expenses/${id}`.remove().then(()=>{
+      return  database.ref('expenses').child(id).remove().then(()=>{
+            dispatch(removeExpense({
+                id:id
+            }));
+        });
+};
+};
 // EDIT_EXPENSE
 
 export const editExpense = (id, updates) => ({
