@@ -53,6 +53,16 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+export const startEditExpense = (id, updates) =>{ // removes from firebase, then from store
+    return (dispatch) =>{
+         // Could have also done following line like so:
+        // return  database.ref('`expenses/${id}`.remove().then(()=>{
+      return  database.ref('expenses').child(id).update(updates).then(()=>{
+            dispatch(editExpense(id,updates));
+        });
+    };
+};
+
 // SET_EXPENSES will set the array value. We get it from Firebase, then set it
 export const setExpenses=(expenses)=>({
     type:'SET_EXPENSES',
